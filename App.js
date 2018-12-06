@@ -8,7 +8,6 @@
 
 import React, { Component } from 'react';
 import {
-  Platform,
   StyleSheet,
   Text,
   View,
@@ -46,11 +45,13 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>
-          React Native With Formik Demo
-        </Text>
+        <Text style={styles.title}>React Native With Formik Demo</Text>
         <Formik
-          initialValues={{ email: '', password: '', confirmPassword: '' }}
+          initialValues={{
+            email: '',
+            password: '',
+            confirmPassword: ''
+          }}
           onSubmit={this._handleSubmit}
           validationSchema={Yup.object().shape({
             email: Yup.string()
@@ -87,6 +88,7 @@ export default class App extends Component {
                 name="email"
                 error={touched.email && errors.email}
               />
+
               <Input
                 label="Password"
                 autoCapitalize="none"
@@ -97,6 +99,7 @@ export default class App extends Component {
                 name="password"
                 error={touched.password && errors.password}
               />
+
               <Input
                 label="Confirm Password"
                 autoCapitalize="none"
@@ -117,10 +120,11 @@ export default class App extends Component {
                 disabled={!isValid || isSubmitting}
               >
                 {isSubmitting ? (
-                  <ActivityIndicator  color="#fff"/>
+                  <ActivityIndicator color="#fff" />
                 ) : (
                   <Text style={styles.buttonText}>Submit</Text>
                 )}
+
               </TouchableOpacity>
             </React.Fragment>
           )}
@@ -141,11 +145,12 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 50,
     color: '#ecf0f1',
-    fontSize: 25,
+    fontSize: 23,
     fontWeight: '500',
+    alignSelf: 'center',
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
-    textShadowOffset: {width: 5, height: 5},
-    textShadowRadius: 5
+    textShadowOffset: { width: 3, height: 5 },
+    textShadowRadius: 8
   },
   button: {
     width: '100%',
@@ -154,7 +159,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 5,
-    marginTop: 20,
+    marginTop: 30,
     height: 40,
     borderRadius: 20
   },
